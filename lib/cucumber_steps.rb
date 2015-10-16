@@ -5,6 +5,6 @@ module CucumberSteps
   require 'cucumber'
   require 'cucumber/rb_support/rb_dsl'
 
-  require 'cucumber_steps/browser_steps'
+  require 'cucumber_steps/browser'
 
 end
