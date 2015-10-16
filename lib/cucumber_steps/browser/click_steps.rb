@@ -1,4 +1,20 @@
 
+And /I click to the "([^"]+)" field that is near to the "([^"]+)" label/i do |tag_name,label_text|
+  relative_positioned_label = browser.label(text: label_text).when_present
+
+  loop do
+    begin
+
+
+    end
+
+
+  end
+
+
+  relative_positioned_label.parent.element(tag_name: tag_name).when_present.click
+end
+
 And /I press the "([^"])" button/i do |button_text|
   browser.element(text: button_text).when_present.click
 end
