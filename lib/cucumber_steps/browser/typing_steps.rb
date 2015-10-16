@@ -1,4 +1,4 @@
-And /^I type the following to the browser:$/i do |text_to_be_typed|
+And /^I type the following into the browser:$/i do |text_to_be_typed|
   browser.send_keys(text_to_be_typed.to_s)
 end
 

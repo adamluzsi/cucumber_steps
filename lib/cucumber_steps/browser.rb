@@ -32,13 +32,16 @@ module CucumberSteps::Browser
       @browser.close
     end
 
-    @browser = ::Watir::Browser.new(browser_name, browser_options)
+    browser = ::Watir::Browser.new(browser_name, browser_options)
+    Kernel.at_exit{ browser.close unless browser.nil?  } if ENV['BROWSER_NOT_EXIT_AFTER_TEST'].nil?
+
+    @browser = browser
 
   end
 
   def browser_name(browser_name=nil)
     @browser_name = browser_name unless browser_name.nil?
-    @browser_name || 'phantomjs'
+    @browser_name || ENV['BROWSER_NAME'] || 'phantomjs'
   end
 
   def browser_options

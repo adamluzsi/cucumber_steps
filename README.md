@@ -18,7 +18,16 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### ENV variables
+
+* BROWSER_NAME 
+  * phantomjs
+  * chrome
+  * firefox 
+  * etx 
+  
+* BROWSER_NOT_EXIT_AFTER_TEST
+  * Do not apply browser object to close on exit
 
 ## Contributing
 
