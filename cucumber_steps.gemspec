@@ -28,4 +28,6 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'watir'
 
+  spec.add_development_dependency 'hirb'
+
 end
