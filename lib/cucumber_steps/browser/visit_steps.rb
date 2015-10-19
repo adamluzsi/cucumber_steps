@@ -1,4 +1,4 @@
-And /^visit the following url: *(.*)$/ do |url|
+And /^I (?:visit|goto) the following url: *(.*)$/ do |url|
   browser.goto(url.strip)
 end
 
