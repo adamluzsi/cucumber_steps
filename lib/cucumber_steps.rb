@@ -1,6 +1,8 @@
 module CucumberSteps
 
-  require 'cucumber_steps/debug' if ENV['DEVELOPER_ENV'].to_s.downcase == 'true'
+  require 'cucumber_steps/env_fetcher'
+
+  require 'cucumber_steps/debug' if CucumberSteps::ENVFetcher.development?
 
   require 'cucumber'
   require 'cucumber/rb_support/rb_dsl'
