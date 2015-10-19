@@ -1,4 +1,4 @@
-And /I hover(?: mouse)? to the "([^"])" button/i do |button_text|
+And /^I hover(?: mouse)? to the "([^"])" button$/i do |button_text|
   browser.current_scope.element(text: button_text).when_present.hover
 end
 
