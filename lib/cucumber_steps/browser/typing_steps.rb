@@ -13,9 +13,14 @@ end
 
 ].each do |special_key|
 
-  And /^I hit #{special_key.to_s.inspect} to the browser$/ do
-    browser.send_keys(:enter)
+  And /^I hit #{special_key.to_s} for the browser$/i do
+    browser.send_keys(special_key)
+  end
+
+  And /^I hit #{special_key.to_s} for the browser (\d+) times$/i do |number_of_times|
+    number_of_times.to_i { browser.send_keys(special_key) }
   end
 
 end
+
 
