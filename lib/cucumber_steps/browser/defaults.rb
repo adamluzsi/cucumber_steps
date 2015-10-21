@@ -1,4 +1,4 @@
-module CucumberSteps::Browser::Instance::Defaults
+module CucumberSteps::Browser::Defaults
 
   BROWSER_ARGUMENTS = {
       'phantomjs' => {
@@ -22,7 +22,7 @@ module CucumberSteps::Browser::Instance::Defaults
 
     options = args.find { |e| e.is_a?(Hash) }
 
-    pare_defined_options = ::CucumberSteps::Browser::Instance::Defaults::BROWSER_ARGUMENTS[browser_name.to_s] || {}
+    pare_defined_options = ::CucumberSteps::Browser::Defaults::BROWSER_ARGUMENTS[browser_name.to_s] || {}
     options.merge!(pare_defined_options) if pare_defined_options.is_a?(Hash)
 
     return args

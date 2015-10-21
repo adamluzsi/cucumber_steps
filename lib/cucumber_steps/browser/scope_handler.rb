@@ -1,4 +1,4 @@
-module CucumberSteps::Browser::Instance::ScopeHandler
+module CucumberSteps::Browser::ScopeHandler
 
   def current_scope
     target_scope = self

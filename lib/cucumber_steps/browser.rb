@@ -1,47 +1,17 @@
-require 'cucumber_steps/browser/browser_steps'
-require 'cucumber_steps/browser/click_steps'
-require 'cucumber_steps/browser/expect_steps'
-require 'cucumber_steps/browser/hover_steps'
-require 'cucumber_steps/browser/sketch_steps'
-require 'cucumber_steps/browser/typing_steps'
-require 'cucumber_steps/browser/visit_steps'
+require 'watir'
+class CucumberSteps::Browser < Watir::Browser
 
-module CucumberSteps::Browser
+  require 'cucumber_steps/browser/defaults'
+  extend CucumberSteps::Browser::Defaults
 
-  require 'cucumber_steps/browser/instance'
+  require 'cucumber_steps/browser/scope_handler'
+  include CucumberSteps::Browser::ScopeHandler
 
-  def browser
-    @browser || reopen_browser!
-  end
+  protected
 
-  def reopen_browser!
-
-    if @browser.is_a?(::CucumberSteps::Browser::Instance)
-      @browser.close
-    end
-
-    browser = ::CucumberSteps::Browser::Instance.new(browser_name)
-    @browser = browser
-
-  end
-
-  def browser_name=(new_browser_name)
-    @browser_name = new_browser_name.to_s.strip
-  end
-
-  def browser_name
-    CucumberSteps::ENVFetcher.browser_name || @browser_name || 'phantomjs'
-  end
-
-  def parse_html_attributes(raw_attributes)
-    raw_attributes.scan(/(\w+)="([^"]+)"/).reduce({}) do |all_matcher, (attr_name, value)|
-      all_matcher[attr_name.downcase.to_sym]=value
-      all_matcher
-    end
+  def initialize(browser_name, *args)
+    super(browser_name, *self.class.args_with_default_options(browser_name, *args))
+    Kernel.at_exit { self.close rescue nil } if CucumberSteps::ENVFetcher.close_browser_at_exit?
   end
 
 end
-
-World(CucumberSteps::Browser)
-
-
