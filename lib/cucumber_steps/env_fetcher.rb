@@ -13,7 +13,7 @@ module CucumberSteps::ENVFetcher
   end
 
   def close_browser_at_exit?
-    not lookup_for(false, 'CLOSE_BROWSER_AT_EXIT', 'BROWSER_CLOSE_AT_EXIT', 'CLOSE_BROWSER')
+    not lookup_for(false, 'CLOSE_BROWSER_AT_EXIT', 'BROWSER_CLOSE_AT_EXIT','CLOSE_BROWSER')
   end
 
   def browser_name
@@ -23,7 +23,7 @@ module CucumberSteps::ENVFetcher
   protected
 
   def lookup_for(boolean, *env_keys)
-    formatted_env(env_keys).any? { |k, v| v == boolean }
+    formatted_env(filtered_env(env_keys)).any? { |k, v| v == boolean }
   end
 
   def lookup_value_by(*env_keys)
