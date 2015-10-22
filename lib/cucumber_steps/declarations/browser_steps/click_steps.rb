@@ -5,6 +5,12 @@ And /^I click to the "([^"]+)" field that is near to the "([^"]+)" label$/i do |
   element_to_click.click
 end
 
+And /^I press the (\w+) with the following text: (.*)$/i do |tag_name, text|
+  element_to_click = browser.current_scope.element(text: text, tag_name: tag_name).when_present
+  element_to_click.hover rescue nil
+  element_to_click.click
+end
+
 And /^I press the "([^"]+)" button$/i do |button_text|
   element_to_click = browser.current_scope.element(text: button_text).when_present
   element_to_click.hover rescue nil
