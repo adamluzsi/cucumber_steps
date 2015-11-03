@@ -4,7 +4,7 @@ module CucumberSteps::Browser::ScopeHandler
     target_scope = self
 
     locating_scopes.each do |location_def|
-      target_scope = location_def.call(target_scope)
+      target_scope = location_def[1].call(target_scope)
     end
 
     target_scope
