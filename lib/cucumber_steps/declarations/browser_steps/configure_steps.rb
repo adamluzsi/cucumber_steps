@@ -9,3 +9,7 @@ end
 And /^the browser resolution is (\d+)x(\d+) pixels$/i do |width, height|
   browser.window.resize_to(width.to_i, height.to_i)
 end
+
+Then(/^I close the browser/) do
+  browser.close
+end
