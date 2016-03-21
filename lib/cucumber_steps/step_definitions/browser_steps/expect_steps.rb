@@ -31,3 +31,9 @@ And(/^the browser should include the following text:$/) do |text|
     browser.current_scope.text.include?(text.strip)
   end
 end
+
+And(/^the browser should match the following text: \/(.*)\/$/) do |regexp_string|
+  Watir::Wait.until(90, "the browser do not match the following regexp: /#{regexp_string}/") do
+    browser.current_scope.text.scan(Regexp.new(regexp_string)).count > 0
+  end
+end

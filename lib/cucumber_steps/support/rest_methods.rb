@@ -1,4 +1,4 @@
-module CucumberSteps::WorldExtensions::RestMethods
+module CucumberSteps::Support::RestMethods
 
   attr_reader :last_response
 
@@ -11,7 +11,7 @@ module CucumberSteps::WorldExtensions::RestMethods
   end
 
   def rest_client
-    CucumberSteps::REST.new(*rest_middlewares)
+    CucumberSteps::RestClient.new(*rest_middlewares)
   end
 
   def use_faraday_middleware(middleware_class, *args, &block)

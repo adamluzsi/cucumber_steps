@@ -1,4 +1,4 @@
-module CucumberSteps::WorldExtensions::BrowserMethods
+module CucumberSteps::Support::BrowserMethods
 
   require 'cucumber_steps/browser'
 

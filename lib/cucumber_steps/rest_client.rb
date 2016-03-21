@@ -1,6 +1,6 @@
 require 'faraday'
 require 'forwardable'
-class CucumberSteps::REST
+class CucumberSteps::RestClient
 
   extend Forwardable
 

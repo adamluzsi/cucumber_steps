@@ -1,6 +1,6 @@
 require 'cucumber_steps/rest'
 
-World(CucumberSteps::WorldExtensions::RestMethods)
+World(CucumberSteps::Support::RestMethods)
 
 And(/I send a "(\w+)" request to: *(.+)/) do |http_method,url|
   rest_call(http_method,url,{},{})
